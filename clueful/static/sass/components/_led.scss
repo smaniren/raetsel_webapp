@@ -1,0 +1,63 @@
+.led {
+  &__shell {
+    &--outer {
+      height: calc(var(#{--led_size}) + var(#{--led_size})/ 2.5);
+      width: calc(var(#{--led_size}) + var(#{--led_size})/ 2.5);
+      background: linear-gradient(-45deg,
+          #e2e2e2 0%,
+          #dbdbdb 50%,
+          #d1d1d1 51%,
+          #fefefe 100%);
+      border-radius: 100rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &--inner {
+      height: calc(var(#{--led_size}) + var(#{--led_size})/ 7);
+      width: calc(var(#{--led_size}) + var(#{--led_size})/ 7);
+      background: radial-gradient(rgba(255, 255, 255, 0) 60%,
+          rgba(55, 55, 55, 1)),
+        linear-gradient(-45deg, #a8a8a8 0%, #d6d6d6 100%);
+      border-radius: 100rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &__diode {
+    height: var(#{--led_size});
+    width: var(#{--led_size});
+    //background: $led_red_off;
+    border-radius: 100rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    &__on {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      //background: $led_red_on;
+      border-radius: 100rem;
+      transition: all 0.05s ease-in-out;
+      opacity: 0;
+    }
+  }
+
+  &__shine {
+    z-index: 2;
+    height: calc(var(#{--led_size})/ 2);
+    width: calc(var(#{--led_size})/ 4);
+    background: linear-gradient(90deg,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 255, 255, 0) 100%);
+    border-radius: 99%;
+    transform: rotate(45deg) translate(calc(var(#{--led_size})/ 7 * -2));
+  }
+}

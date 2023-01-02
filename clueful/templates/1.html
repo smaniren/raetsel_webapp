@@ -1,0 +1,31 @@
+{% extends "riddle_base.html" %}
+{% block bg %}
+<div class="bg-video">
+    <video class="bg-video__content" autoplay muted loop>
+        <source src="../static/img/game_1_vid.mp4" type="video/mp4">
+        Your browser is not supported!
+    </video>
+</div>
+{% endblock %}
+{% block riddle %}
+<div class="riddle__1">
+    <p class="riddle__1__text">
+        THE ANSWER LIES WITHIN M<span class="riddle__1__hidden-text">{{ data['solution'] }}</span>E
+    </p>
+    <!-- <form class="answer"
+        onsubmit="event.preventDefault(),socketCheckAnswer({{ data['game_id'] }},'answer_input', {{ data['solution'] }})">
+        <input type="text" class="answer__input" id="answer_input" placeholder="Answer...">
+        <button type="submit" class="answer__btn-submit-answer" value="Go!">Go!</button>
+    </form> -->
+    <div class="answer-container">
+        <form onsubmit="socketCheckAnswer({{ data['game_id'] }},'answer', {{ data['solution'] }}); return false;">
+            <input type="integer" name="answer" id="answer" placeholder="Enter solution">
+            <button type='button' class="btn btn--answer"
+                onclick="socketCheckAnswer({{ data['game_id'] }},'answer', {{ data['solution'] }});">
+                go!
+            </button>
+        </form>
+    </div>
+
+</div>
+{% endblock %}

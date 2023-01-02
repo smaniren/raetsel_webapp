@@ -1,0 +1,100 @@
+.riddle-menu {
+    position: absolute;
+    top: 2rem;
+    left: 0;
+    font-size: 3rem;
+    width: 100%;
+    color: $color-white;
+    z-index: 9999;
+
+    @include respond(phone) {
+        top: 5rem;
+    }
+
+    /* cursor: pointer; */
+    ul {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        list-style: none;
+        padding: 0 3rem;
+    }
+
+    a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 5rem;
+        height: 5rem;
+        border-radius: 150rem;
+        background-color: $color-grey-light-4;
+        overflow: hidden;
+        transition: all 0.2s;
+        text-decoration: none;
+
+        @include respond(phone) {
+            width: 7rem;
+            height: 7rem;
+
+            &:hover {
+                width: 15rem;
+
+                &>.riddle-menu__back-link {
+                    transform: translateX(-4.5rem);
+                }
+
+                &>.riddle-menu__hint-link {
+                    transform: translateX(4.5rem);
+                }
+            }
+        }
+
+    }
+
+    &__back-link {
+        text-decoration: none;
+        color: $color-grey-dark-1;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        flex-direction: row;
+        transform: translateX(6.4rem);
+        transition: all cubic-bezier(.6, -0.29, .55, 1.32) 0.4s;
+
+        @include respond(phone) {
+            transform: translateX(6.5rem);
+        }
+
+        &__icon {
+            width: 4rem;
+            height: 4rem;
+            fill: $color-grey-dark-1;
+            margin-right: 5rem;
+        }
+    }
+
+    &__hint-link {
+        text-decoration: none;
+        color: $color-grey-dark-1;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        flex-direction: row;
+        transform: translateX(-5.6rem);
+        transition: all cubic-bezier(.6, -0.29, .55, 1.32) 0.4s;
+        cursor: pointer;
+
+        @include respond(phone) {
+            transform: translateX(-5.8rem);
+        }
+
+        &__icon {
+            width: 4rem;
+            height: 4rem;
+            fill: $color-grey-dark-1;
+            margin-left: 5rem;
+        }
+    }
+
+}

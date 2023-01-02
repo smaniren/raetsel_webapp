@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block head %}
+
+{% endblock %}
+{% block main %}
+<canvas id="c"></canvas>
+    <div class="p-art-creator__wrapper">
+      <div class="p-art-creator__menu">
+        <button class="btn btn--white" id="btnDeletePicture">Delete</button>
+        <button class="btn btn--white" id="btnCreateRandom">Random</button>
+        <span class="p-art-creator__menu__close-icon modal__close-icon" onclick="closeModalImage()">&times;</span>
+      </div>
+      <div class="color-picker">
+        
+        
+        <div class="color-picker__colors" style="background-color: #dd7e6b" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #ea9999" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #f9cb9c" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #ffe599" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #b6d7a8" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #a2c4c9" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #a4c2f4" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #9fc5e8" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #b4a7d6" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #d5a6bd" onclick="setColor(this)"></div>
+        
+        <div class="color-picker__colors" style="background-color: #980000" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #ff0000" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #ff9900" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #ffff00" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #00ff00" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #00ffff" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #4a86e8" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #0000ff" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #9900ff" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #ff00ff" onclick="setColor(this)"></div>
+        
+        <div class="color-picker__colors" style="background-color: #a61c00" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #cc0000" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #e69138" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #f1c232" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #6aa84f" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #45818e" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #3c78d8" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #3d85c6" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #674ea7" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #a64d79" onclick="setColor(this)"></div>
+        
+        <div class="color-picker__colors" style="background-color: #85200c" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #990000" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #b45f06" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #bf9000" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #38761d" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #134f5c" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #1155cc" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #0b5394" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #351c75" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #741b47" onclick="setColor(this)"></div>
+        
+        <div class="color-picker__colors" style="background-color: #5b0f00" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #660000" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #783f04" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #7f6000" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #274e13" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #0c343d" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #1c4587" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #073763" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #20124d" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #4c1130" onclick="setColor(this)"></div>
+        
+        <div class="color-picker__colors active" style="background-color: #000000" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #434343" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #666666" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #999999" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #b7b7b7" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #cccccc" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #d9d9d9" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #efefef" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #f3f3f3" onclick="setColor(this)"></div>
+        <div class="color-picker__colors" style="background-color: #ffffff" onclick="setColor(this)"></div>
+      </div>
+      
+      <div class="p-art-creator__image--container">
+      </div>
+      <button onclick="saveUserImage()" id="btnSaveImage" class="p-art-creator__image--btnSave btn--login">Save Image</button>
+    </div>
+    <script src="../static/js/image-creator.js"></script>
+{% endblock %}
+
+
+{% block scripts %}
+<script src="../static/js/background.js"></script>
+
+{% endblock %}

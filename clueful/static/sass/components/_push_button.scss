@@ -1,0 +1,80 @@
+.push-button {
+    margin: calc(var(#{--btn-size}) / 8);
+    height: var(#{--btn-size});
+    width: var(#{--btn-size});
+    background: linear-gradient(45deg, #999, #bbb);
+    border-radius: calc(var(#{--btn-size}) / 10);
+    position: relative;
+
+    &__screw {
+        height: calc(var(#{--btn-size}) / 13);
+        width: calc(var(#{--btn-size}) / 13);
+        background-image: linear-gradient(45deg,
+                #777 41%,
+                #555 41%,
+                #555 59%,
+                #666 59%);
+        border-radius: var(#{--btn-size});
+        position: absolute;
+
+        &:nth-child(1) {
+            left: calc(var(#{--btn-size}) / 20);
+            bottom: calc(var(#{--btn-size}) / 20);
+        }
+
+        &:nth-child(2) {
+            right: calc(var(#{--btn-size}) / 20);
+            bottom: calc(var(#{--btn-size}) / 20);
+        }
+
+        &:nth-child(3) {
+            right: calc(var(#{--btn-size}) / 20);
+            top: calc(var(#{--btn-size}) / 20);
+        }
+
+        &:nth-child(4) {
+            left: calc(var(#{--btn-size}) / 20);
+            top: calc(var(#{--btn-size}) / 20);
+        }
+    }
+
+    &__button {
+        height: calc(var(#{--btn-size}) * 1.05);
+        width: calc(var(#{--btn-size}) * 1.05);
+        border-radius: calc(var(#{--btn-size}) * 2);
+        background: var(#{--btn-color-dark}); //    var(#{--btn-color-light}));
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        transition: all 0.3s;
+        box-shadow: inset calc(var(#{--btn-size}) / 10) calc(var(#{--btn-size}) / 10) calc(var(#{--btn-size}) / 10) var(#{--btn-color-light}),
+        0 .2rem 0.2rem rgba(0, 0, 0, .6);
+        cursor: pointer;
+
+        &:after {
+            content: "";
+            position: absolute;
+            left: calc(var(#{--btn-size}) /16);
+            top: calc(var(#{--btn-size}) /8);
+            height: 40%;
+            width: 60%;
+            transform: rotate(315deg);
+            border-radius: 50%;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.5),
+                    rgba(255, 255, 255, 0));
+        }
+
+        &:hover {
+            transform: translate(-50%, -53%);
+            box-shadow: inset calc(var(#{--btn-size}) / 20) calc(var(#{--btn-size}) / 20) calc(var(#{--btn-size}) / 20) var(#{--btn-color-light}),
+            0 .4rem 0.4rem rgba(0, 0, 0, .3);
+        }
+
+        &:active {
+            transform: translate(-50%, -48%);
+            box-shadow: inset calc(var(#{--btn-size}) / 8) calc(var(#{--btn-size}) / 8) calc(var(#{--btn-size}) / 8) var(#{--btn-color-light}),
+            0 .1rem 0.1rem rgba(0, 0, 0, .9);
+        }
+    }
+}

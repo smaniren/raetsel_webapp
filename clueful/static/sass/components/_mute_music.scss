@@ -1,0 +1,23 @@
+.mute-music{
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 9999999;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50rem;
+    background-color: $color-grey-dark-1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.25s;
+    &:hover{
+        scale:1.2;
+    }
+    &:active{
+        scale:1.1;
+    }
+    svg{
+        fill: $color-grey-light-4;
+    }
+}

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500;700&family=Courier+Prime:wght@400;700&display=swap"
+        rel="stylesheet">
+    {% assets "scss_all" %}
+    <link rel="stylesheet" href="/static/gen/all.css">
+    {% endassets %}
+    <link rel="shortcut icon" type="image/png" href="img/favicon.png">
+    <!-- 
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"
+        integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA=="
+        crossorigin="anonymous"></script>
+    <script src="../static/js/sockets.js"></script>
+    <title>ClueFul &mdash; Puzzles of the internet</title>
+</head>
+
+<body>
+    <div class="mute-music" id="btn_Music_toggle">
+        <svg class="user-nav__icon">
+            <use class="music_on" id="music_on_svg" xlink:href="../static/img/sprite.svg#icon-volume-mute"></use>
+            <use class="music_off" id="music_off_svg" xlink:href="../static/img/sprite.svg#icon-volume-mute2"></use>
+        </svg>
+    </div>
+    <div id="answer__wrong__container" class="answer__wrong__container">
+    </div>
+    <!-- HINT MODAL -->
+    <div class="modal hint-modal" id="hint-modal">
+        <div class="hint-modal__content">
+            <span class="hint-modal__btn-close" onclick="closeModal('hint-modal')">&times;</span>
+            <p class="hint-modal__text">Need a hint?</p>
+            <ul>
+                {% set counter = {'value': 0} %}
+                {% for hint in data['hint'] %}
+                {% if hint[1] != false %}
+                <li><button href="#" class="hint-modal__btn-hint hint-modal__btn-hint--{{ hint[0]|string }}"
+                        id="hint-{{ hint[0]|string }}-btn" style="display: none;">Hint {{ hint[0]|string }}</button>
+                </li>
+                <li>
+                    <div class="hint-modal__hint--{{ hint[0]|string }}" id="hint-{{ hint[0]|string }}-text"
+                        style="display: block;">{{ hint[1] }}</div>
+                </li>
+                {% elif counter.value <= 0 %} {% if counter.update({'value': (counter.value + 1)}) %} {% endif %} <li>
+                    <button href="#" class="hint-modal__btn-hint hint-modal__btn-hint--{{ hint[0]|string }}"
+                        id="hint-{{ hint[0]|string }}-btn">Hint {{ hint[0]|string }}</button></li>
+                    <li>
+                        <div class="hint-modal__hint--{{ hint[0]|string }}" id="hint-{{ hint[0]|string }}-text"
+                            style="display: none;"></div>
+                    </li>
+                    {% else %}
+                    <li><button href="#" class="hint-modal__btn-hint hint-modal__btn-hint--{{ hint[0]|string }}"
+                            id="hint-{{ hint[0]|string }}-btn" style="display: none;">Hint {{ hint[0]|string }}</button>
+                    </li>
+                    <li>
+                        <div class="hint-modal__hint--{{ hint[0]|string }}" id="hint-{{ hint[0]|string }}-text"
+                            style="display: none;"></div>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <!-- RIDDLE DONE MODAL -->
+    <div class="modal riddle-done-modal" id="riddle-done-modal" style="display: none;">
+        <div class="riddle-done-modal__content">
+            <p class="riddle-done-modal__text">Conratulations, you did it!</p>
+            <p class="riddle-done-modal__text riddle-done-modal__text--small">How hard was this riddle for you?</p>
+            <span class="riddle-done-modal__text riddle-done-modal__text--small u-margin-bottom-medium"
+                id="riddle-rating__text">rate your experience!</span>
+            <div class="riddle-rating u-margin-bottom-medium">
+                <div class="riddle-rating__star " id="riddle-rating__star--1">
+                    <svg viewBox="0 0 40 45">
+                        <polygon points="20,2 8,40 38,16 2,16 32,40" />
+                        Sorry, your browser does not support inline SVG.
+                    </svg>
+                </div>
+                <div class="riddle-rating__star" id="riddle-rating__star--2">
+                    <svg viewBox="0 0 40 45">
+                        <polygon points="20,2 8,40 38,16 2,16 32,40" />
+                    </svg>
+                </div>
+                <div class="riddle-rating__star" id="riddle-rating__star--3">
+                    <svg viewBox="0 0 40 45">
+                        <polygon points="20,2 8,40 38,16 2,16 32,40" />
+                    </svg>
+                </div>
+                <div class="riddle-rating__star" id="riddle-rating__star--4">
+                    <svg viewBox="0 0 40 45">
+                        <polygon points="20,2 8,40 38,16 2,16 32,40" />
+                    </svg>
+                </div>
+                <div class="riddle-rating__star" id="riddle-rating__star--5">
+                    <svg viewBox="0 0 40 45">
+                        <polygon points="20,2 8,40 38,16 2,16 32,40" />
+                    </svg>
+                </div>
+            </div>
+            <a id="riddle-rating__save-rating" class="btn btn--green u-margin-bottom-medium" style="display: none;">save
+                rating</a>
+        </div>
+    </div>
+    <div class="container-riddle blurred_by_modal" id="container-riddle">
+        {% block bg %}{% endblock %}
+        <nav class="riddle-menu">
+            <ul>
+                <a href="/" class="riddle-menu__back">
+                    <li class="riddle-menu__back-link">
+                        <!-- <a href="/" class="riddle-menu__back-link"> -->
+                        <svg class="riddle-menu__back-link__icon">
+                            <use xlink:href="../static/img/sprite.svg#icon-arrow-long-left"></use>
+                        </svg>
+                        <span class="riddle-menu__back-link-text">back</span>
+                        <!-- </a> -->
+                    </li>
+                </a>
+                <!-- COUNTDOWN -->
+                <div class="countdown">
+                    <span>Points:</span>
+                    <div class="countdown__numbers">
+                        <div id="countdown--hundreds">X</div>
+                        <div id="countdown--tens">X</div>
+                        <div id="countdown--units">X</div>
+                    </div>
+                </div>
+                <a id="riddle-menu__hint-link" class="riddle-menu__hint" onclick="showModal('hint-modal')">
+                    <li class="riddle-menu__hint-link">
+                        <span class="riddle-menu__hint-link-text">hint</span>
+                        <svg class="riddle-menu__hint-link__icon">
+                            <use xlink:href="../static/img/sprite.svg#icon-help"></use>
+                        </svg>
+                    </li>
+                </a>
+            </ul>
+        </nav>
+        <div class="riddle" id="riddle">
+            {% block riddle %}{% endblock %}
+        </div>
+    </div>
+    <script src="../static/js/modals.js"></script>
+    <script src="../static/js/riddles.js"></script>
+    <script src="../static/js/background_music_riddle.js"></script>
+    {% block scripts %}{% endblock %}
+    <script type="text/javascript">
+        var data = {{ data | tojson }}
+        interval(data);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+// COLORS
+//$color-primary: #3daa34;
+//$color-primary-light: #93c01f;
+//$color-primary-dark: #32892a;
+
+$color-primary: rgba(62, 170, 52, 0.8);
+$color-primary-light: rgba(146, 192, 31, 0.8);
+$color-primary-dark: rgba(50, 137, 42, 0.8);
+
+$color-primary-transparent: rgba(62, 170, 52, 0.8);
+$color-primary-light-transparent: rgba(146, 192, 31, 0.8);
+$color-primary-dark-transparent: rgba(50, 137, 42, 0.8);
+
+$primay-bg: linear-gradient(to bottom left, rgba(50, 137, 42, 0.8), rgba(147,192,31, 0.8));
+$dark-bg: linear-gradient(to bottom left, rgb(24, 24, 24), rgb(31, 31, 31));
+
+$color-secondary-light: #ff3737;
+$color-secondary-dark: #bd3b32;
+
+$color-tertiary-light: #00A8FF;
+$color-tertiary-dark: #005CB3;
+
+$color-grey-light-1: #faf9f9;
+$color-grey-light-2: #f4f2f2;
+$color-grey-light-3: #f0eeee;
+$color-grey-light-4: #ccc;
+
+$color-grey-dark-1: #181818;
+$color-grey-dark-2: #777;
+$color-grey-dark-3: #999;
+
+$color-white: #fff;
+$color-black: #000;
+$color-stars-filled: rgb(251, 255, 0);
+$color-green: rgb(1, 134, 1);
+
+$color-box-shadow-hover: rgba(black, 0.2);
+$color-box-shadow-active: rgba(black, 0.1);
+
+$metal-gradient:
+-webkit-repeating-linear-gradient(left,hsla(0, 0%, 100%, 0) 0%,hsla(0, 0%, 100%, 0) 6%,hsla(0, 0%, 100%, 0.1) 7.5%),
+-webkit-repeating-linear-gradient(left, hsla(0, 0%, 0%, 0) 0%, hsla(0,0%,0%,0)4%, hsla(0, 0%, 0%, 0.03) 4.5%),
+-webkit-repeating-linear-gradient(left, hsla(0, 0%, 100%, 0) 0%, hsla(0,0%,100%,0)1.2%, hsla(0, 0%, 100%, 0.15) 2.2%),
+linear-gradient(180deg,hsl(0, 0%, 78%) 0%,hsl(0, 0%, 90%) 47%,hsl(0, 0%, 78%) 53%,hsl(0, 0%, 70%) 100%);
+
+
+// FONT
+$default-font-size: 1.6rem;
+
+//ALERTS
+$alert-gradient-dist: 5rem;
+$alert-gradient-deg: 114deg;
+
+$color-alert-warning: linear-gradient($alert-gradient-deg, $color-secondary-light $alert-gradient-dist, $color-secondary-dark 100%);
+$color-alert-info:    linear-gradient($alert-gradient-deg, rgba(254,213,0,1) $alert-gradient-dist, rgba(254,188,0,1) 100%);
+$color-alert-success: linear-gradient($alert-gradient-deg, $color-primary-light $alert-gradient-dist, $color-primary-dark 100%);
+
+$color-alert-border:rgb(31, 28, 28);
+
+$icon-size-left: 4.5rem;
+$icon-size-top: 5.5rem;
+
+
+

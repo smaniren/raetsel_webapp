@@ -1,0 +1,51 @@
+.sql-section{
+    display: flex;
+    width: 100%;
+    min-height: calc(100vh - 10rem);
+    background: $color-white;
+    flex-direction: column;
+}
+
+.table-selection{
+
+    margin: 5rem 0 2rem 5rem;
+    display: inline-block;
+}
+
+.sql-statements{
+    display: flex;
+    flex-direction: column;
+    padding: 0 5rem 5rem 5rem;
+    font-size: 1.5rem;
+    &__form-group{
+        display: flex;
+        label{
+            display: inline-block;
+            padding: .5rem 0;
+            min-width: 10rem;
+        }
+        input, textarea, select{
+            width: 20rem;
+            margin: 0.5rem 0;
+        }
+        ul{
+            display: flex;
+            list-style: none;
+            li{
+                display: flex;
+                width: 6rem;
+                input, label{
+                    min-width: 3rem;
+                }
+            }
+        }
+    }
+    button{
+        width: 30rem;
+    }
+    &__invalid-feedback{
+        padding: .5rem 0;
+        margin-left: 2rem;
+        color: red;
+    }
+}

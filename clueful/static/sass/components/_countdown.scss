@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap");
+
+.countdown {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 auto;
+    font-family: "Cutive Mono";
+    border-radius: 1rem;
+    background: #333;
+    padding: 0.5rem 0.5rem 0.5rem 1.3rem;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #eee;
+    font-size: 3rem;
+    line-height: 1;
+    flex-wrap: wrap;
+
+    @include respond(phone) {
+        font-size: 5rem !important;
+    }
+
+    &__numbers {
+        display: flex;
+        align-items: center;
+        perspective: 20rem;
+        box-shadow: inset 0 0 4rem #444;
+        background: #111;
+        padding: 0.3rem 0.3rem;
+        border-radius: 0.5rem;
+
+        * {
+            padding: 0rem .5rem;
+            margin: 0rem 0.2rem;
+            color: #111;
+            background: #eee;
+            border-radius: 0.5rem;
+            transition: all 0.4s;
+            position: relative;
+
+            @include respond(phone) {
+                padding: 0 1rem !important;
+            }
+        }
+    }
+}
+
+.pulse_out {
+    animation: pulse_out 0.4s ease-in forwards;
+}
+
+.pulse_in {
+    animation: pulse_in 0.4s ease-out;
+}
+
+@keyframes pulse_out {
+    0% {
+        opacity: 1;
+        transform: translateY(0rem) rotateX(0deg);
+    }
+
+    10% {
+        opacity: 1;
+        transform: translateY(-0.5rem) rotateX(18deg);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(2.5rem) rotateX(-90deg);
+    }
+}
+
+@keyframes pulse_in {
+    0% {
+        opacity: 0;
+        transform: translateY(-2.5rem) rotateX(90deg);
+    }
+
+    90% {
+        opacity: 1;
+        transform: translateY(0.25rem) rotateX(-9deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0rem) rotateX(0deg);
+    }
+}

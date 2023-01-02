@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+
+{% block main %}
+<div class="sql-section">
+    <div class="table-selection">
+        <a class="btn btn--white" href="/admin/user">User</a>
+        <a class="btn btn--white" href="/admin/riddles">Riddles</a>
+        <a class="btn btn--white" href="/admin/riddle_data">Riddle_data</a>
+        <a class="btn btn--white" href="/admin/hide_flash">hide_flash</a>
+    </div>
+    <form method="post" class="sql-statements" action="" onsubmit="return disableSubmitButton(this);" novalidate>
+    {{ form.csrf_token }}
+        <div class="sql-statements__form-group">
+            {{ form.id.label }}
+            {{ form.id }}
+            {% if form.id.errors %}
+                <div class="sql-statements__invalid-feedback">
+                    {% for error in form.id.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        <div class="sql-statements__form-group">
+            {{ form.column.label }}
+            {{ form.column }}
+            {% if form.column.errors %}
+                <div class="sql-statements__invalid-feedback">
+                    {% for error in form.column.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        <div class="sql-statements__form-group">
+            {{ form.value.label }}
+            {{ form.value }}
+            {% if form.value.errors %}
+                <div class="sql-statements__invalid-feedback">
+                    {% for error in form.value.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="sql-statements__form-group">
+            {{ form.password.label }}
+            {{ form.password }}
+            {% if form.password.errors %}
+                <div class="sql-statements__invalid-feedback">
+                    {% for error in form.password.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+
+        <button type="submit" class="btn"> change! </button>
+    </form>
+    {{ data|safe }}
+</div>
+{% endblock %}
+
+
+{% block scripts %}
+{% endblock %}

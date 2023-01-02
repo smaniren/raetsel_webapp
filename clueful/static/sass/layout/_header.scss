@@ -1,0 +1,90 @@
+
+.header {
+    font-size: 1.4rem;
+    height: 10rem;
+    background-color: $color-grey-dark-1;
+    border-bottom: $color-grey-light-1;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo{
+    margin-left: 1rem;
+    margin-top: 1rem;
+    height: 6rem;
+    cursor: pointer;
+    @include respond(phone) {
+        margin-left: 3rem;
+    }
+}
+
+////////////////////////////////////////
+// USER NAVIGATION
+.user-nav {
+    align-self: stretch;
+    
+    display: flex;
+    align-items: center;
+
+    &__user{
+    text-decoration: none;
+    color: $color-grey-dark-2;
+    }
+    & > * {
+        padding: 0 2rem;
+        cursor: pointer;
+        height: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+    & > *:hover {
+        background-color: $color-grey-light-1;
+    }
+
+    &__icon-box {
+        position: relative;
+    }
+
+    &__icon {
+        height: 2.25rem;
+        width: 2.25rem;
+        fill: $color-grey-dark-2;
+    }
+
+    &__notification {
+        font-size: .8rem;
+        height: 1.75rem;
+        width: 1.75rem;
+        border-radius: 50%;
+        background-color: $color-primary-dark;
+        color: #fff;
+        position: absolute;
+        top: 1.5rem;
+        right: 1.1rem;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__user-photo {
+        height: 2.5rem;
+        border-radius: 1rem;
+        margin-right: 1rem;
+        
+        @include respond(phone) {
+            height: 3rem;
+        }
+    }
+    &__user-name{
+        display: none;
+        @include respond(phone) {
+            display: contents;
+        }
+    }
+
+}
+

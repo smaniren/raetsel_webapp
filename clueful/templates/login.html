@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+
+{% block main %}
+
+<canvas id="c"></canvas>
+<section class="section-login">
+    <form method="post" class="form" action="" onsubmit="return disableSubmitButton(this);" novalidate>
+        <h2 class="form__header u-margin-top-medium">Login</h2>
+        {{ form.csrf_token }}
+        <div class="form__group">
+            {% if form.email.errors %}
+                <div class="form__invalid-feedback">
+                    {% for error in form.email.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {{ form.email(class="form__input", placeholder="Email", type="email") }}
+            {{ form.email.label(class="form__label") }}
+        </div>
+        <div class="form__group">
+            {% if form.password.errors %}
+                <div class="form__invalid-feedback">
+                    {% for error in form.password.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {{ form.password(class="form__input", placeholder="Password", type="password") }}
+            {{ form.password.label(class="form__label") }}
+        </div>
+        <div class="form__group u-margin-bottom-medium">
+            <!-- {{ form.submit(class="btn btn--login")}} -->
+            <button type="submit" class="btn--login">Enter!</button>
+        </div>
+        <div class="form__links">
+            <!-- {% if form.errors %}
+            {{ form.errors }}
+            {% endif %} -->
+            <a href="{{ url_for('forgot_password') }}">forgot password? </a> | <a href="{{ url_for('signup') }}"> signup</a>
+        </div>
+    </form>
+
+    <!-- <form action="" class="form">
+        <h2 class="form__header u-margin-top-medium">Login</h2>
+        <div class="form__group">
+            <input type="email" name="form__name" id="form__name" class="form__input" placeholder="Email">
+            <label for="form__name" class="form__label">Email</label>
+        </div>
+        <div class="form__group">
+            <input type="password" name="form__password" id="form__password" class="form__input" placeholder="Password">
+            <label for="form__password" class="form__label">Password</label>
+        </div>
+
+
+        <div class="form__group u-margin-bottom-medium">
+            <button class="btn btn--login">Enter</button>
+        </div>
+        <div class="form__links">
+            <a href="#">forgot password? </a> | <a href="{{ url_for('signup') }}"> signup</a>
+        </div>
+    </form> -->
+</section>
+{% endblock %}
+
+
+{% block scripts %}
+<script src="../static/js/background.js"></script>
+{% endblock %}

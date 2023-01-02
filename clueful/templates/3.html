@@ -1,0 +1,24 @@
+{% extends "riddle_base.html" %}
+{% block bg %}
+<img src="../static/img/game_3.jpg" class="bg-image">
+{% endblock %}
+{% block riddle %}
+<div class="riddle__3">
+    <div id='arrow-container' class="riddle__3__arrow-container">
+
+    </div>
+    <div class="answer-container">
+        <form onsubmit="checkAnswer(); return false;">
+            <input type="integer" name="answer" id="answer" placeholder="Enter solution">
+            <button type='button' class="btn btn--answer" onclick="checkAnswer()">
+                go!
+            </button>
+        </form>
+    </div>
+
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="../static/js/riddle_specific/3.js"></script>
+{% endblock %}

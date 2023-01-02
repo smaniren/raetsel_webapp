@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% block head %}{% endblock %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        {% assets "scss_all" %}
+            <link rel="stylesheet" href="/static/gen/all.css">
+        {% endassets %}
+        <link rel="shortcut icon" type="image/png" href="../static/img/">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+        <!-- Socket Io -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="../static/js/sockets.js"></script>
+      
+        <title>ClueFul &mdash; Puzzles of the internet</title>
+    </head>
+    <body>
+        <div class="mute-music" id="btn_Music_toggle">
+            <svg class="user-nav__icon">
+                <use class="music_on" id="music_on_svg" xlink:href="../static/img/sprite.svg#icon-volume-mute"></use>
+                <use class="music_off" id="music_off_svg" xlink:href="../static/img/sprite.svg#icon-volume-mute2" ></use>
+            </svg>
+        </div>
+            <div class="container">
+                <header class="header">
+                    <picture onclick="location.href='/home'">
+                        <source media="(min-width: 490px)" srcset="../static/img/logo.png"class="logo">
+                        <img src="../static/img/logo_small.png" alt="logo" class="logo">
+                    </picture>
+                    
+                    {% if current_user.is_authenticated %}
+                    <nav class="user-nav">
+                        <a class="user-nav__icon-box" href="{{ url_for('home') }}">
+                            <svg class="user-nav__icon">
+                                <use xlink:href="../static/img/sprite.svg#icon-dice"></use>
+                            </svg>
+                        </a>
+                        {% if current_user.email == 'renzosmania@hotmail.com' %}
+                        <a class="user-nav__icon-box" href="{{ url_for('admin') }}">
+                            <svg class="user-nav__icon">
+                                <use xlink:href="../static/img/sprite.svg#icon-cog"></use>
+                            </svg>
+                            <!-- <span class="user-nav__notification">8</span> -->
+                        </a>
+                        {% endif %}
+                        <a class="user-nav__icon-box" href="{{ url_for('logout') }}">
+                            <svg class="user-nav__icon">
+                                <use xlink:href="../static/img/sprite.svg#icon-log-out"></use>
+                            </svg>
+                        </a>
+                        <a href="{{ url_for('account') }}" class="user-nav__user">
+                            <!-- <div class="user-nav__user"> -->
+                                <img src="../static/img/profile_pics/{{current_user.image_file}}" alt="User photo" class="user-nav__user-photo">
+                                <span class="user-nav__user-name">{{ current_user.username }}</span>
+                            <!-- </div> -->
+                        </a>
+                    </nav>
+                    {% endif %}
+                </header>
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                                {% if message.split(' ')[0][0:3] == 'id=' %}
+                                    {% set id = message.split(' ')[0][3:] %}
+                                    {% set message_no_id = message | replace('id='+id+' ', '') %}
+                                    <div class="alert alert--{{ category }} alert--top" id="alert_{{id}}">
+                                        <button type="button" id="alert__close-btn_{{id}}" class="alert__close-btn" onclick="this.parentElement.style.display='none';resize_bg();socketGetElementInsideContainer(this.id, 'alert__dont-show-again_{{id}}')"><span>&times;</span></button>
+                                        <div class="alert__text" id="alert__text_{{id}}">
+                                            {% if 'add_dsa' in message %}
+                                            <p>{{ message_no_id | replace('add_dsa ', '')}}</p>
+                                            <input type="checkbox" name="alert__dont-show-again" id="alert__dont-show-again_{{id}}" class="alert__dont-show-again"> Don't show again
+                                            {% else %}
+                                            <p>{{ message_no_id }}</p>
+                                            {% endif %}
+                                            
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <div class="alert alert--warning alert--top" id="alert">
+                                        <button type="button" id="alert__close-btn" class="alert__close-btn" onclick="this.parentElement.style.display='none';resize_bg()"><span>&times;</span></button>
+                                        <div class="alert__text" id="alert__text">
+                                            <p>alert-ID is missing --> Add "id=___" in the beginning of the flash-statement!</p>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+
+                <main id="main-content" class="content">
+
+                    {% block main %}{% endblock %}
+                    
+                </main>
+            </div>
+            <script src="../static/js/base.js"></script>
+            <script src="../static/js/background_music_menu.js"></script>
+    </body>
+    {% block scripts %}
+    {% endblock %}
+
+</html>

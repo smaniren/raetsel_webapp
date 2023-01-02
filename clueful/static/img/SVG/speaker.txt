@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="600px"
+	 height="256px" viewBox="0 0 600 256" style="enable-background:new 0 0 600 256;" xml:space="preserve">
+<g id="Ebene_3">
+	<circle style="fill:#4D4D4D;" cx="40.661" cy="40.25" r="40.25"/>
+</g>
+<g id="speaker">
+	<path style="fill:none;stroke:#000000;stroke-width:5;stroke-miterlimit:10;" d="M36.501,30.5H25.405
+		c-5.799,0-10.5,4.701-10.5,10.5s4.701,10.5,10.5,10.5h11.022L52.5,65.078V16.203L36.501,30.5z"/>
+</g>
+<g id="muted">
+	<g>
+		<line style="fill:none;stroke:#C1272D;stroke-width:5;stroke-miterlimit:10;" x1="66.644" y1="14.657" x2="14.678" y2="66.623"/>
+		<circle style="fill:none;stroke:#C1272D;stroke-width:5;stroke-miterlimit:10;" cx="40.661" cy="40.64" r="35.262"/>
+	</g>
+</g>
+</svg>

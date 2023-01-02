@@ -1,0 +1,47 @@
+
+.content {
+    position: relative;
+    flex:1 1 auto;
+    display: flex;
+    height: auto;
+    min-height: calc(100vh - 10rem);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.puzzle-view{
+    /* display: flex; */
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    @include respond(phone) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @include respond(tab-port) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    @include respond(tab-land) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    position: relative;
+    /* align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap; */
+    /* transform: translateY(-8rem);
+    padding-top: 8rem; */
+    column-gap: 3rem;
+    row-gap: 3rem;
+    padding: 3rem;
+    padding-bottom: 10rem;
+    margin-bottom: -8rem;
+    z-index: 1;
+    
+}
+
+canvas{
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-shadow: inset 0 0 20rem 20rem rgba(255, 255, 255, 0.274);
+    z-index: -50;
+}

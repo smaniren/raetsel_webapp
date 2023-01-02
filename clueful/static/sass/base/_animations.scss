@@ -1,0 +1,228 @@
+@keyframes moveInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-10rem);
+    }
+
+    80% {
+        transform: translateX(1rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(10rem);
+    }
+
+    80% {
+        transform: translateX(-1rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(3rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+        transform: scale(.9)
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1)
+    }
+}
+
+@keyframes blinker {
+    0% {
+        opacity: 1.0;
+    }
+
+    50% {
+        opacity: 0.0;
+    }
+
+    100% {
+        opacity: 1.0;
+    }
+}
+
+@keyframes party {
+    0% {
+        background-color: red;
+    }
+
+    10% {
+        background-color: orange;
+    }
+
+    20% {
+        background-color: yellow;
+    }
+
+    30% {
+        background-color: green;
+    }
+
+    40% {
+        background-color: blue;
+    }
+
+    50% {
+        background-color: purple;
+    }
+}
+
+@keyframes moveInLeft {
+    0% {
+        transform: translateX(-20rem);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(0rem);
+        opacity: 0;
+    }
+}
+
+@keyframes moveOutLeft {
+    0% {
+        transform: translateX(0rem);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(-20rem);
+        opacity: 0;
+    }
+}
+
+@keyframes moveInRight {
+    0% {
+        transform: translateX(20rem);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0rem);
+        opacity: 1;
+    }
+}
+
+@keyframes moveOutRight {
+    0% {
+        transform: translateX(0rem);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(20rem);
+        opacity: 0;
+    }
+}
+
+
+
+.pulse_out {
+    animation: pulse_out 0.5s ease-in-out forwards;
+}
+
+.pulse_in {
+    animation: pulse_in 0.5s ease-in-out;
+}
+
+@keyframes pulse_out {
+    0% {
+        opacity: 1;
+        transform: translateY(0rem) rotateX(0deg) perspective(none);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(2rem) rotateX(90deg) perspective(20rem);
+    }
+}
+
+@keyframes pulse_in {
+    0% {
+        opacity: 0;
+        transform: translateY(-2rem) rotateX(-90deg) perspective(20rem);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0rem) rotateX(0deg) perspective(none);
+    }
+}
+
+
+//ANSWER WRONG!
+@keyframes answer_wrong {
+    0% {
+        transform: scale(1) translate(-50%, 50%);
+        opacity: 0;
+    }
+
+    80% {
+        transform: scale(1) translate(-50%, -50%);
+        opacity: 1;
+    }
+
+    99% {
+        transform: scale(100) translate(-50%, -50%);
+        opacity: 1;
+    }
+
+    99% {
+        transform: scale(100) translate(-50%, -50%);
+        opacity: 0;
+    }
+}
+
+//STAR RATING
+@keyframes rating_animation {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+
+    20% {
+        transform: scale(1.2) rotate(-20deg);
+    }
+
+    100% {
+        transform: scale(1) rotate(360deg);
+    }
+}
+
+/* RIDDLES */
+/* #3 */
+@keyframes bg_rolling {
+    0% {
+        background-position-x: 0%;
+    }
+
+    100% {
+        background-position-x: 200%;
+    }
+}

@@ -1,0 +1,71 @@
+
+{% extends "base.html" %}
+{% block head %}
+{% endblock %}
+
+{% block main %}
+<div class="container">
+
+<div class="puzzle-view">
+    <canvas id="c"></canvas>
+
+    {% for riddle in data['riddles'] %}
+    {% set url = url_for('game', riddleId = riddle['riddle_id']) %}
+    <div class="puzzle-card" onclick="window.location.href='{{ url }}'">
+        <div class="puzzle-card__stripe">&nbsp;</div>
+        <h4 class="puzzle-card__number">{{ riddle['riddle_nr'] }}</h4>
+        <ul>
+            <li><span class="puzzle-card__heading">Difficulty</span></li>
+            <li><input class="puzzle-card__rating"
+                        max="5"
+                        step="0.1"
+                        style="--value:{{ riddle['riddle_rating'] }}"
+                        type="range"
+                        disabled>
+            </li>
+            <li><span class="puzzle-card__heading">Fastest:</span></li>
+            <li>
+
+                {% for player in riddle['riddle_fastest_player'] %}
+                    {{ player }}
+                {% endfor %}
+            </li>
+            <li><span class="puzzle-card__heading">Average time:</span></li>
+            <li>{{ riddle['riddle_mean_time'] }}</li>
+        </ul>
+    </div>
+    {% endfor %}
+</div>
+</div>
+<div class="section-leaderboard">
+    <div class="leaderboard">
+        <h2 class="leaderboard__header">
+            <svg class="leaderboard__header__icon">
+                <use xlink:href="../static/img/sprite.svg#icon-trophy"></use>
+            </svg>
+            Top 10
+        </h2>
+        <div class="leaderboard__table">
+            {% for player in data['top_ten'] %}
+            <div class="leaderboard__row">
+                <div class="leaderboard__column leaderboard__column--rank">{{loop.index}}</div>
+                <div class="leaderboard__column leaderboard__column--username">{{ player['username'] }}</div>
+                <div class="leaderboard__column leaderboard__column--points">{{ player['points_sum'] }}</div>
+                <div class="leaderboard__column leaderboard__column--user-image"><img class="leaderboard__column--user-image__img" src="../static/img/profile_pics/{{ player['image_file'] }}"></div>
+            </div>
+            {% endfor %}
+        </div>
+                  
+    </div>
+
+</div>
+<footer class="section-footer">
+    
+</footer>
+{% endblock %}
+
+
+{% block scripts %}
+<script src="../static/js/background.js"></script>
+{% endblock %}
+

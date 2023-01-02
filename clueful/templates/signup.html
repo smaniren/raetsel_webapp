@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block main %}
+<canvas id="c"></canvas>
+<section class="section-login">
+    <form method="post" class="form" action="" onsubmit="return disableSubmitButton(this);" novalidate>
+        <h2 class="form__header u-margin-top-medium">Register</h2>
+        {{ form.csrf_token }}
+        <div class="form__group">
+            {% if form.email.errors %}
+                <div class="form__invalid-feedback">
+                    {% for error in form.email.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {{ form.email(class="form__input", placeholder="Email", type="email") }}
+            {{ form.email.label(class="form__label") }}
+
+
+        </div>
+        <div class="form__group">
+            {% if form.username.errors %}
+                <div class="form__invalid-feedback">
+                    {% for error in form.username.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {{ form.username(class="form__input", placeholder="Username") }}
+            {{ form.username.label(class="form__label") }}
+        </div>
+        <div class="form__group">
+            {% if form.password.errors %}
+                <div class="form__invalid-feedback">
+                    {% for error in form.password.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {{ form.password(class="form__input", placeholder="Password", type="password") }}
+            {{ form.password.label(class="form__label") }}
+        </div>
+        <div class="form__group">
+            {% if form.password_confirm.errors %}
+                <div class="form__invalid-feedback">
+                    {% for error in form.password_confirm.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {{ form.password_confirm(class="form__input", placeholder="Confirm Password", type="password") }}
+            {{ form.password_confirm.label(class="form__label") }}
+        </div>
+        <div class="form__group u-margin-bottom-medium">
+            <!-- {{ form.submit(class="btn btn--login")}} -->
+            <button type="submit" class="btn--login">Signup</button>
+        </div>
+        <div class="form__links">
+            <!-- {% if form.errors %}
+            {{ form.errors }}
+            {% endif %} -->
+            <a href="{{ url_for('login') }}">Already have an account?</a>
+        </div>
+    </form>
+</section>
+{% endblock %}
+
+
+{% block scripts %}
+<script src="../static/js/background.js"></script>
+{% endblock %}

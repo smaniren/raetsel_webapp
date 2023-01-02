@@ -1,0 +1,34 @@
+
+.tbl__stats{
+    min-width: 41rem;
+    text-align: center;
+    border-spacing:0; /* Removes the cell spacing via CSS */
+    border-collapse: collapse;
+    font-size: 2rem;
+
+    & > thead > tr {
+        & > th{
+            &:not(:last-of-type){
+                border-right: 0.1rem solid $color-grey-dark-3;
+            }
+            border-bottom: 0.1rem solid $color-grey-dark-3;
+        }
+    }
+    & > tbody > tr {
+        & > td{
+            &:not(:last-of-type){
+                border-right: 0.1rem solid $color-grey-dark-3;
+            }
+        }
+    }
+    
+    & > tfoot > tr {
+        & > td{
+            &:not(:last-of-type){
+                border-right: 0.1rem solid $color-grey-dark-3;
+            }
+        }
+    }
+    
+}
+

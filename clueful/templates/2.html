@@ -1,0 +1,88 @@
+{% extends "riddle_base.html" %}
+{% block bg %}
+<div class="bg-image" id="riddle" style="opacity:1"></div>
+{% endblock %}
+
+
+{% block riddle %}
+<div class="riddle__2">
+    <div class="riddle__2__color-ranges">
+        <div class="riddle__2__leds">
+            <div class="led__container led_red" id="r2_led_red_1" style="--led_size: 2rem">
+                <div class="led__shell--outer">
+                    <div class="led__shell--inner">
+                        <div class="led__diode">
+                            <span class="led__diode__on"></span>
+                            <div class="led__shine">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="led__container led_red" id="r2_led_red_2" style="--led_size: 2rem">
+                <div class="led__shell--outer">
+                    <div class="led__shell--inner">
+                        <div class="led__diode">
+                            <span class="led__diode__on"></span>
+                            <div class="led__shine">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="led__container led_red" id="r2_led_red_3" style="--led_size: 2rem">
+                <div class="led__shell--outer">
+                    <div class="led__shell--inner">
+                        <div class="led__diode">
+                            <span class="led__diode__on"></span>
+                            <div class="led__shine">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="led__container led_red" id="r2_led_red_4" style="--led_size: 2rem">
+                <div class="led__shell--outer">
+                    <div class="led__shell--inner">
+                        <div class="led__diode">
+                            <span class="led__diode__on"></span>
+                            <div class="led__shine">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="led__container led_red" id="r2_led_red_5" style="--led_size: 2rem">
+                <div class="led__shell--outer">
+                    <div class="led__shell--inner">
+                        <div class="led__diode">
+                            <span class="led__diode__on" style="opacity: 0;"></span>
+                            <div class="led__shine">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="riddle__2__ranges">
+            <input class="riddle__2__color-range" id='riddle__2__range_red' type="range" min="0" max="7" value="0"
+                step="1">
+            <input class="riddle__2__color-range" id='riddle__2__range_green' type="range" min="0" max="7" value="0"
+                step="1">
+            <input class="riddle__2__color-range" id='riddle__2__range_blue' type="range" min="0" max="7" value="0"
+                step="1">
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+
+
+{% block scripts %}
+<script src="../static/js/riddle_specific/2.js"></script>
+{% endblock %}

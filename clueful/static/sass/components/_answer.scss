@@ -1,0 +1,207 @@
+.answer {
+    width: 100%;
+    padding: 4rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__input {
+        width: 100%;
+        flex: 0 1 35rem;
+        font-family: 'courier prime';
+        font-size: 4rem;
+        background-color: $color-black;
+        color: $color-primary-light;
+        padding: 3rem 5rem;
+        border-radius: 2rem 0 0 2rem;
+        text-align: center;
+
+        &::placeholder {
+            color: $color-primary-dark;
+        }
+
+        &:focus::placeholder {
+            opacity: 0;
+        }
+
+        &::-webkit-input-placeholder {
+            color: inherit;
+        }
+
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:focus,
+        &:-webkit-autofill:active {
+            box-shadow: 0 0 0 6rem rgb(0, 0, 0) inset !important;
+            -webkit-text-fill-color: $color-primary-light;
+        }
+    }
+
+    &__btn-submit-answer {
+        flex: 0 1 auto;
+        text-align: left;
+        font-family: 'Comfortaa';
+        font-size: 4rem;
+        padding: 3rem 2.5rem;
+        border-radius: 0 2rem 2rem 0;
+        text-decoration: none;
+        background-color: darken($color-green, 10);
+        color: $color-grey-light-4;
+        transition: all 0.2s;
+
+        &:hover {
+            transform: translateY(-2px);
+            background-color: $color-green;
+        }
+
+        &:active {
+            transform: translateY(0px);
+            background-color: $color-green;
+        }
+    }
+
+}
+
+.answer-container {
+    padding: 0.1rem;
+    border-radius: 1rem;
+    background: #333;
+    box-shadow: 0 0 1rem 0.5rem rgba(255, 255, 255, 0.1);
+    margin-bottom: 3rem;
+
+    form {
+        display: flex;
+    }
+
+    input {
+        background-image: linear-gradient(45deg, #111 50%, #555 50%, #111 60%);
+        background-size: 250%;
+        height: 4rem;
+        border-radius: 1rem 0 0 1rem;
+        border: none;
+        padding: 1rem;
+        color: #00c300;
+        outline: none;
+        font-family: "Roboto Mono";
+        font-weight: 600;
+        font-size: 2rem;
+        width: 20rem;
+        transition: background-position-x 0.5s;
+
+        &:focus,
+        &:hover {
+            background-position-x: 150%;
+        }
+
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:focus,
+        &:-webkit-autofill:active {
+            box-shadow: 0 0 0 30px #111 inset !important;
+            color: #00c300;
+        }
+
+        &:-webkit-autofill {
+            -webkit-text-fill-color: #00c300 !important;
+        }
+
+        &::placeholder {
+            color: #00c300;
+        }
+    }
+
+    button {
+        border-radius: 0 1rem 1rem 0;
+        padding: 0 1rem;
+        cursor: pointer;
+        transition: all 0.4s;
+        font-family: "Roboto Mono";
+        font-weight: 500;
+        font-size: 1.6rem;
+        background-image: linear-gradient(45deg,
+                darkgreen 50%,
+                #00af00 50%,
+                darkgreen 60%);
+        background-size: 400%;
+        background-repeat: repeat;
+        border: none;
+        color: #eee;
+
+        &:hover,
+        &:focus {
+            transform: scale(1.1);
+            background-position-x: 100%;
+            outline: none;
+        }
+    }
+}
+
+
+.answer__wrong {
+    &__container {
+        position: absolute;
+        overflow: hidden;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    font-family: 'courier prime';
+    transform-origin: 0% 0%;
+    font-size: 8rem;
+    color: $color-grey-dark-1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    animation: answer_wrong 2s forwards;
+    transform: scale(0) translate(-50%, -50%);
+    transition: all 1.5s;
+    z-index: 5;
+    text-shadow: 0 0 15px #fff,
+    0 0 110px rgba(255, 255, 255, 0),
+    0 0 120px rgba(255, 255, 255, 0.253),
+    0 0 130px rgba(255, 255, 255, 0.349),
+    0 0 40px rgba(255, 255, 255, 0.651),
+    0 0 55px rgba(255, 255, 255, 0.76),
+    0 0 5px rgb(255, 255, 255);
+}
+
+
+.riddle-rating {
+    &__animation {
+        animation: rating_animation 1s;
+    }
+
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content: center;
+    width: 30rem;
+    height: 6rem;
+    border-radius: 2rem;
+    box-shadow:1px 1px 4px #111;
+    background: linear-gradient(to bottom left, $color-primary, $color-primary-light);
+
+    &__star {
+        display: flex;
+        transform-origin: 40% 50%;
+        padding-right: 1.5rem;
+        justify-content: center;
+
+        &:last-child {
+            padding-right: 0rem;
+        }
+
+        svg {
+            width: 4rem;
+            height: 4.4rem;
+
+            polygon {
+                fill-rule: nonzero;
+                fill: $color-grey-light-1;
+            }
+        }
+    }
+}

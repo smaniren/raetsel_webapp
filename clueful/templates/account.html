@@ -1,0 +1,271 @@
+{% extends "base.html" %}
+{% block head %}
+<script type="text/javascript">
+    let user_image_values = {{ user_image_values|tojson|safe }}
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+{% endblock %}
+{% block main %}
+<!-- Create Image Modal -->
+<div class="modal" id="p-art-creator" style="display: none;">
+<div class="p-art-creator__wrapper">
+    <div class="p-art-creator__menu">
+      <button class="btn btn--white" id="btnDeletePicture">Delete</button>
+      <button class="btn btn--white" id="btnCreateRandom" onclick="getRandomImage()">Random</button>
+      <span class="p-art-creator__menu__close-icon modal__close-icon" onclick="closeModal('p-art-creator')">&times;</span>
+    </div>
+    <div class="color-picker">
+      <div class="color-picker__colors" style="background-color: #dd7e6b" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #ea9999" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #f9cb9c" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #ffe599" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #b6d7a8" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #a2c4c9" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #a4c2f4" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #9fc5e8" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #b4a7d6" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #d5a6bd" onclick="setColor(this)"></div>
+      
+      <div class="color-picker__colors" style="background-color: #980000" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #ff0000" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #ff9900" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #ffff00" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #00ff00" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #00ffff" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #4a86e8" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #0000ff" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #9900ff" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #ff00ff" onclick="setColor(this)"></div>
+      
+      <div class="color-picker__colors" style="background-color: #a61c00" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #cc0000" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #e69138" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #f1c232" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #6aa84f" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #45818e" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #3c78d8" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #3d85c6" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #674ea7" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #a64d79" onclick="setColor(this)"></div>
+      
+      <div class="color-picker__colors" style="background-color: #85200c" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #990000" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #b45f06" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #bf9000" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #38761d" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #134f5c" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #1155cc" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #0b5394" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #351c75" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #741b47" onclick="setColor(this)"></div>
+      
+      <div class="color-picker__colors" style="background-color: #5b0f00" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #660000" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #783f04" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #7f6000" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #274e13" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #0c343d" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #1c4587" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #073763" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #20124d" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #4c1130" onclick="setColor(this)"></div>
+      
+      <div class="color-picker__colors active" style="background-color: #000000" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #434343" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #666666" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #999999" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #b7b7b7" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #cccccc" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #d9d9d9" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #efefef" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #f3f3f3" onclick="setColor(this)"></div>
+      <div class="color-picker__colors" style="background-color: #ffffff" onclick="setColor(this)"></div>
+    </div>
+    <div class="p-art-creator__image--container">
+    </div>
+    <button onclick="socketSaveUserImage()" id="btnSaveImage" class="p-art-creator__image--btnSave btn--login">Save Image</button>
+  </div>
+  <script src="../static/js/image-creator.js"></script>
+</div>
+
+<!-- Password Modal -->
+{% if show_modal_password == 1 %}
+<div class="modal" id="modalPassword" style="display: flex;">
+{% else %}
+<div class="modal" id="modalPassword">
+{% endif %}
+    <form method="post" action="" id="modalPasswordFrom" class="modal__container"novalidate>
+        <h2 class="form__header u-margin-top-medium">Update your Password</h2>
+        <span class="modal__close-icon" onclick="closeModal('modalPassword')">&times;</span>
+        {{ form_password.csrf_token }}
+        <div class="form__group">
+            {% if form_password.current_password.errors %}
+                <div class="form__invalid-feedback">
+                    {% for error in form_password.current_password.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {{ form_password.current_password(class="form__input", placeholder="Current Password", type="password") }}
+            {{ form_password.current_password.label(class="form__label") }}
+        </div>
+        <div class="form__group">
+            {% if form_password.password.errors %}
+                <div class="form__invalid-feedback">
+                    {% for error in form_password.password.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {{ form_password.password(class="form__input", placeholder="New password", type="password") }}
+            {{ form_password.password.label(class="form__label") }}
+        </div>
+        <div class="form__group">
+            {% if form_password.password_confirm.errors %}
+                <div class="form__invalid-feedback">
+                    {% for error in form_password.password_confirm.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {{ form_password.password_confirm(class="form__input", placeholder="Confirm new password", type="password") }}
+            {{ form_password.password_confirm.label(class="form__label") }}
+        </div>
+        <div class="form__group u-margin-bottom-medium">
+            {{ form_password.submitPassword(class="btn--login")}}
+            <!-- <button class="btn--login" id="submitPassword" name="submitPassword"  value="edit password!">ok!</button> -->
+        </div>
+    </form>
+</div>
+<canvas id="c"></canvas>
+<div class="account-section blurred_by_modal">
+    <div class="user-profile__title">
+        <h1>Profile</h1>
+    </div>
+    <div class="user-profile__info">
+        <div class="user-profile__info__left">
+            <div class="user-profile__info__facts">
+                <div class="user-profile__info__facts--title">Points</div>
+                <div class="user-profile__info__facts--text">{{ data['stats_total']['total_points'] }}
+                </div>
+            </div>
+
+            <div class="user-profile__info__image u-margin-bottom-medium" for="picture" onclick="showModal('p-art-creator'), removeAnimations()">
+                <img src="../static/img/profile_pics/{{current_user.image_file}}" class="user-profile__info__image">
+            </div>
+
+            <form method="post" action="" class="user-profile__info__left" novalidate>
+            {{ form_username.csrf_token }}
+                <div class="user-profile__info__facts">
+                    <div class="user-profile__info__facts--title">Username</div>
+                    {% if form_username.username.errors %}
+                        <div class="form__invalid-feedback">
+                            {% for error in form_username.username.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    {% if show_username_input %}
+                    <a onclick="editText(this.id)" id="username" class="user-profile__info__facts--text moveOutLeft" style="display: none;">
+                    {% else %}
+                    <a onclick="editText(this.id)" id="username" class="user-profile__info__facts--text">
+                    {% endif %}
+                        {{ current_user.username }}
+                        <svg class="user-profile__info__modify--icon">
+                            <use xlink:href="../static/img/sprite.svg#icon-pencil2"></use>
+                        </svg>
+                    </a>
+                    {% if show_username_input %}
+                    <div  class="form__group--horizontal user-profile__info__input moveInRight" style="display: flex; transform: translateX(0rem); opacity: 1;" id="usernameInput">
+                    {% else %}
+                    <div  class="form__group--horizontal user-profile__info__input" id="usernameInput">
+                    {% endif %}
+                    {{ form_username.username(class="form__input form__input--small ") }}
+                    {{ form_username.submitUsername(class="btn btn--edit btn--rounded-right")}}
+                    <!-- <button type="submit" class="btn btn--edit">ok!</button> -->
+                    </div>
+                </div>
+            </form>
+            <form method="post" action="" class="user-profile__info__left" novalidate>
+                {{ form_email.csrf_token }}
+                <div class="user-profile__info__facts">
+                    <div class="user-profile__info__facts--title">Email</div>
+                    {% if form_email.email.errors %}
+                        <div class="form__invalid-feedback">
+                            {% for error in form_email.email.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    {% if show_email_input %}
+                    <a onclick="editText(this.id)" id="email" class="user-profile__info__facts--text moveOutLeft" style="display: none;">
+                    {% else %}
+                    <a onclick="editText(this.id)" id="email" class="user-profile__info__facts--text">
+                    {% endif %}
+                        {{ current_user.email }}
+                        <svg class="user-profile__info__modify--icon">
+                            <use xlink:href="../static/img/sprite.svg#icon-pencil2"></use>
+                        </svg>
+                    </a>
+                    {% if show_email_input %}
+                    <div  class="form__group--horizontal user-profile__info__input moveInRight" style="display: flex; transform: translateX(0rem); opacity: 1;" id="emailInput">
+                    {% else %}
+                    <div class="form__group--horizontal user-profile__info__input" id="emailInput">
+                    {% endif %}
+
+                        {{ form_email.email(class="form__input form__input--small", type="email") }}
+                        {{ form_email.submitEmail(class="btn btn--edit btn--rounded-right")}}
+                        <!-- <button type="submit" class="btn btn--edit">ok!</button> -->
+                    </div>
+                </div>
+                <a onclick="showModal('modalPassword'), removeAnimations()" id="btnPassword" class="btn btn--green u-margin-top-small u-margin-bottom-medium user-profile__info__facts--password">edit password</a>
+                <!-- <a onclick="showModal('p-art-creator'), removeAnimations()" id="btnPassword" class="btn btn--green u-margin-top-small u-margin-bottom-medium user-profile__info__facts--password">edit image</a> -->
+                
+            </form>
+        </div>
+
+
+        <!-- USER-STATS -->
+        <div class="user-profile__info__right">
+            <div class="user-profile__info__right__stats__title"><h1>Stats</h1></div>
+            <table class="tbl__stats">
+                <thead>
+                    <tr>
+                        <th>Puzzle No.</th>
+                        <th>Time used</th>
+                        <th>Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for stat in data['stats'] %}
+                    <tr>
+                        <td>{{ stat[0] }}</td>
+                        <td>{{ stat[1] }}</td>
+                        <td>{{ stat[2] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>Total</td>
+                        <td>{{ data['stats_total']['total_time'] }}</td>
+                        <td>{{ data['stats_total']['total_points'] }}</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+
+{% block scripts %}
+<script src="../static/js/background.js"></script>
+<script src="../static/js/account.js"></script>
+
+<script src="../static/js/modals.js"></script>
+
+{% endblock %}

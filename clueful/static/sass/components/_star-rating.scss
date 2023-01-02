@@ -1,0 +1,50 @@
+.puzzle-card__rating {
+  --dir: right;
+  --fill: rgb(184, 165, 0);
+  --fillbg: rgb(100, 100, 100);
+  --star: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 26"><path d="M10 1.3l2.388 6.722h6.412l-5.232 3.948 1.871 6.928-5.439-4.154-5.438 4.154 1.87-6.928-5.233-3.948h6.412l2.389-6.722z"/></svg>');
+  --stars: 5;
+  --starsize: 3rem;
+  --symbol: var(#{--star});
+  --w: calc(var(#{--stars}) * var(#{--starsize}));
+  --x: calc(100% * (var(#{--value}) / var(#{--stars})));
+  block-size: var(#{--starsize});
+  inline-size: var(#{--w});
+  position: relative;
+  -webkit-appearance: none;
+  /* NO JS */ }
+  [dir="rtl"] .puzzle-card__rating {
+    --dir: left; }
+  .puzzle-card__rating::-moz-range-track {
+    background: -webkit-gradient(linear, left top, right top, color-stop(var(#{--x}), var(#{--fill})), color-stop(var(#{--x}),var(#{--fillbg})));
+    block-size: 100%;
+    mask: repeat left center/var(#{--starsize}) var(#{--symbol}); }
+  .puzzle-card__rating::-webkit-slider-runnable-track {
+    background: -webkit-gradient(linear, left top, right top, color-stop(var(#{--x}), var(#{--fill})), color-stop(var(#{--x}),var(#{--fillbg})));
+    block-size: 100%;
+    mask: repeat left center/var(#{--starsize}) var(#{--symbol});
+    -webkit-mask: repeat left center/var(#{--starsize}) var(#{--symbol}); }
+  .puzzle-card__rating::-moz-range-thumb {
+    height: var(#{--starsize});
+    opacity: 0;
+    width: var(#{--starsize}); }
+  .puzzle-card__rating::-webkit-slider-thumb {
+    height: var(#{--starsize});
+    opacity: 0;
+    width: var(#{--starsize});
+    -webkit-appearance: none; }
+  .puzzle-card__rating--nojs::-moz-range-track {
+    background: var(#{--fillbg}); }
+  .puzzle-card__rating--nojs::-moz-range-progress {
+    background: var(#{--fill});
+    block-size: 100%;
+    mask: repeat left center/var(#{--starsize}) var(#{--star}); }
+  .puzzle-card__rating--nojs::-webkit-slider-runnable-track {
+    background: var(#{--fillbg}); }
+  .puzzle-card__rating--nojs::-webkit-slider-thumb {
+    background-color: var(#{--fill});
+    box-shadow: calc(0rem - var(#{--w})) 0 0 var(#{--w}) var(#{--fill});
+    opacity: 1;
+    width: 1px; }
+  [dir="rtl"] .puzzle-card__rating--nojs::-webkit-slider-thumb {
+    box-shadow: var(#{--w}) 0 0 var(#{--w}) var(#{--fill}); }

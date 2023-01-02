@@ -1,0 +1,253 @@
+.account-section {
+    display: flex;
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    flex-direction: column;
+    padding-bottom: 10rem; //kann wieder weg, sobald nächste Sektion anfängt
+}
+
+.user-profile {
+    &__title {
+        width: 100%;
+        height: 15rem;
+        transform: skewY(-2deg);
+        margin-top: -3rem;
+        background: linear-gradient(to bottom left, rgba(50, 137, 42, 0.8), rgba(50, 137, 42, 0.8));
+        background-image: linear-gradient(to right bottom, $color-primary-light-transparent, $color-primary-transparent), url(../img/titel_background.jpg);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        h1 {
+            font-size: 5rem;
+            font-weight: 900;
+            margin-top: 2rem;
+            transform: skewY(2deg);
+            color: $color-grey-light-1;
+        }
+    }
+
+    &__info {
+        display: block;
+        width: 100%;
+        background: linear-gradient(to right, $color-grey-light-4, $color-grey-light-2);
+        transform: skewY(-2deg);
+        margin-top: 2rem;
+        padding: 5rem 0;
+        font-size: 2rem;
+
+        @include respond(tab-port) {
+            align-items: center;
+            justify-content: space-around;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+        }
+
+        &>* {
+            transform: skewY(2deg);
+        }
+
+        &__left {
+            display: flex;
+            align-items: center;
+
+            /*  */
+            flex-direction: column;
+            min-width: 41rem;
+
+            @include respond(tab-port) {
+                align-self: flex-start;
+            }
+        }
+
+        &__right {
+            display: flex;
+            flex: 0 1 41rem;
+            flex-direction: column;
+            position: relative;
+            align-items: center;
+
+        }
+
+        &__image {
+            height: 17rem;
+            width: 17rem;
+            border-radius: 2rem;
+            overflow: hidden;
+            box-shadow: 0 0 1rem 1rem rgba(0, 0, 0, 0.1);
+            position: relative;
+            cursor: pointer;
+
+            &::after {
+                padding-top: .5rem;
+                content: "edit\Aimage";
+                white-space: pre;
+                border-radius: 50%;
+                width: 150%;
+                height: 100%;
+                background: linear-gradient(to right, $color-primary-light, $color-primary);
+                position: absolute;
+                top: 13rem;
+                left: 50%;
+                transform: translateX(-50%);
+                text-align: center;
+                transition: all 0.4s;
+                text-decoration: none;
+                line-height: 4rem;
+                color: $color-grey-dark-1;
+            }
+
+            :hover&::after {
+                top: 10rem;
+                background: linear-gradient(to right, $color-primary-light, $color-primary);
+                line-height: 3rem;
+                width: 120%;
+            }
+        }
+
+        &__facts {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 2rem;
+
+            &--title {
+                font-weight: 900;
+            }
+
+            &--text {
+                transition: all 0.3s;
+                font-weight: 300;
+                color: $color-grey-dark-2;
+                ;
+                text-decoration: none;
+
+                &.moveOutLeft {
+                    animation: moveOutLeft 0.3s cubic-bezier(.47, -0.38, .83, .67);
+                }
+            }
+
+            &--password {
+                transition: all 0.3s;
+
+                &.moveOutLeft {
+                    animation: moveOutLeft 0.3s cubic-bezier(.47, -0.38, .83, .67);
+                }
+
+            }
+        }
+
+        &__modify {
+            &--icon {
+                margin-left: .5rem;
+                transition: all 0.2s;
+                transform: scale(0.7) rotate(0deg) translateY(.5rem);
+                height: 2.5rem;
+                width: 2.5rem;
+                fill: $color-grey-dark-2;
+                cursor: pointer;
+            }
+
+            :hover>&--icon {
+                fill: $color-primary-dark;
+                transform: scale(1) rotate(5deg) translateY(.5rem);
+            }
+        }
+
+        &__input {
+            display: none;
+            opacity: 0;
+            height: 3.6rem;
+            transform: translateX(40rem);
+            transition: all 0.3s;
+
+            &.moveInRight {
+                animation: moveInRight 0.3s cubic-bezier(.47, -0.38, .83, .67);
+            }
+        }
+    }
+
+    &__noshow {
+        opacity: 0;
+        position: absolute;
+        height: 0;
+        width: 0;
+        cursor: pointer;
+    }
+}
+
+.user-profile__info__right {
+    background-color: azure;
+    box-shadow: 1rem 1rem 1rem $color-grey-dark-3;
+    width: 80%;
+    margin: 5rem auto;
+
+    @include respond(tab-port) {
+        width: 100%;
+        margin: revert;
+    }
+
+    &__stats__title {
+        display: flex;
+        justify-content: center;
+        line-height: 2.5rem;
+        background-image: linear-gradient(to right bottom, $color-primary-light-transparent, $color-primary-transparent), url(../img/titel_background.jpg);
+        background-size: cover;
+        width: 100%;
+        padding: 3rem 0;
+        transform: skewY(-2deg) translateY(-1.5rem);
+
+        &>* {
+            transform: skewY(2deg);
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            color: $color-grey-light-1;
+        }
+    }
+}
+
+.tbl__stats {
+    min-width: 41rem;
+    text-align: center;
+    border-spacing: 0;
+    /* Removes the cell spacing via CSS */
+    border-collapse: collapse;
+    font-size: 2rem;
+    margin: 1rem;
+
+    &>thead>tr {
+        &>th {
+            &:not(:last-of-type) {
+                border-right: 0.1rem solid $color-grey-dark-3;
+            }
+
+            border-bottom: 0.1rem solid $color-grey-dark-3;
+        }
+    }
+
+    &>tbody>tr {
+        &>td {
+            &:not(:last-of-type) {
+                border-right: 0.1rem solid $color-grey-dark-3;
+            }
+        }
+    }
+
+    &>tfoot>tr {
+        &>td {
+            &:not(:last-of-type) {
+                border-right: 0.1rem solid $color-grey-dark-3;
+            }
+        }
+    }
+
+}
